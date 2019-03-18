@@ -4,7 +4,8 @@ services:
   reverse_proxy:
     build:
       context: nginx
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
+    restart: always
     ports:
       - 4000:80
     networks:
@@ -13,7 +14,7 @@ services:
   frontend:
     build:
       context: archivio-digitale-client
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     restart: always
     volumes:
       - /app/node_modules
@@ -28,7 +29,7 @@ services:
   backend:
     build:
       context: archivio-digitale-server
-      dockerfile: docker/Dockerfile.dev
+      dockerfile: docker/Dockerfile
     secrets:
       - archivio_server_jwt_secret
     environment:

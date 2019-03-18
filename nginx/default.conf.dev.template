@@ -14,7 +14,6 @@ server {
     proxy_set_header Host $http_host;
   }
 
-
   location /sockjs-node {
     proxy_pass http://client;
     proxy_http_version 1.1;
@@ -22,7 +21,19 @@ server {
     proxy_set_header Connection "Upgrade";
   }
 
+  # API section
+
   location /public {
+    proxy_pass http://api;
+    proxy_set_header Host $http_host;
+  }
+
+  location /login {
+    proxy_pass http://api;
+    proxy_set_header Host $http_host;
+  }
+
+  location /logout {
     proxy_pass http://api;
     proxy_set_header Host $http_host;
   }
