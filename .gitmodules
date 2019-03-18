@@ -1,0 +1,9 @@
+[submodule "archivio-digitale-server"]
+	path = archivio-digitale-server
+	url = https://github.com/ITISEnricoFermi/archivio-digitale-server.git
+[submodule "archivio-digitale-mailer"]
+	path = archivio-digitale-mailer
+	url = https://github.com/ITISEnricoFermi/archivio-digitale-mailer.git
+[submodule "archivio-digitale-client"]
+	path = archivio-digitale-client
+	url = https://github.com/ITISEnricoFermi/archivio-digitale-client.git
