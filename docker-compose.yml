@@ -34,7 +34,7 @@ services:
       - archivio_server_jwt_secret
     environment:
       MONGODB_URI: "mongodb://database:27017/archivio"
-      # MAILER_URL: "http://mailer/send"
+      MAILER_URL: "http://mailer/send"
       JWT_SECRET_FILE: "/run/secrets/archivio_server_jwt_secret"
     volumes:
       - /app/node_modules
@@ -58,20 +58,24 @@ services:
       MONGO_INITDB_DATABASE: archivio
     networks:
       - backend-network
-  # mailer:
-  #   image: itisenricofermi/archivio-digitale-mailer:latest
-  #   secrets:
-  #     - archivio_mailer_user
-  #     - archivio_mailer_password
-  #   environment:
-  #     - PORT=465
-  #     - USER_FILE=/run/secrets/archivio_mailer_user
-  #     - PASSWORD_FILE=/run/secrets/archivio_mailer_password
-  #     - SERVER=smtp.ionos.com
-  #     - SECURE=true
-  #     - FROM=me@riccardosangiorgio.com
-  #   networks:
-  #     - backend-network
+      
+  mailer:
+    build:
+      context: archivio-digitale-mailer
+      dockerfile: docker/Dockerfile.dev
+    secrets:
+      - archivio_mailer_user
+      - archivio_mailer_password
+    volumes:
+      - /app/node_modules
+      - ./archivio-digitale-mailer:/app
+    environment:
+      - USER_FILE=/run/secrets/archivio_mailer_user
+      - PASSWORD_FILE=/run/secrets/archivio_mailer_password
+      - SERVER=smtp.ionos.com
+      - FROM=me@riccardosangiorgio.com
+    networks:
+      - backend-network
 
 secrets:
   archivio_server_jwt_secret:
