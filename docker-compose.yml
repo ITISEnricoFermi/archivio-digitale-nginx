@@ -10,6 +10,7 @@ services:
       - 4000:80
     networks:
       - frontend-network
+      - backend-network
 
   frontend:
     build:
@@ -47,7 +48,6 @@ services:
       - database
     networks:
       - backend-network
-      - frontend-network
 
   database:
     image: mongo:3.4.19-jessie
