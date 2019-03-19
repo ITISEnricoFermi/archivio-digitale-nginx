@@ -21,7 +21,7 @@ services:
       - /app/node_modules
       - ./archivio-digitale-client:/app
     ports:
-      - 4001:8080
+      - 4001:80
     depends_on:
       - backend
     networks:
@@ -43,7 +43,7 @@ services:
       - ./archivio-digitale-server:/app
       - server-data:/app/server/public
     ports:
-      - 4002:3000
+      - 4002:80
     depends_on:
       - database
     networks:
@@ -68,6 +68,8 @@ services:
     secrets:
       - archivio_mailer_user
       - archivio_mailer_password
+    ports:
+      - 4003:80
     volumes:
       - /app/node_modules
       - ./archivio-digitale-mailer:/app
