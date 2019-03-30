@@ -6,9 +6,38 @@
   Progetto Archivio Digitale sviluppato per l'ITIS Enrico Fermi.
 </p>
 
+## Prerequisiti
+
+- Docker
+- Docker swarm
+
+## Come avviare
+
+- Generare i segreti
+
+```shell
+$ echo jwtsecret | docker secret create archivio_server_jwt_secret -
+$ echo mail-user | docker secret create archivio_mailer_user -
+$ echo mail-password | docker secret create archivio_mailer_password -
+$ echo minio-sk | docker secret create archivio_minio_secret_key -
+$ echo minio-ak | docker secret create archivio_minio_access_key -
+```
+
+- Avvio dello stack
+
+```shell
+$ git clone https://github.com/ITISEnricoFermi/archivio-digitale-nginx.git
+$ cd archivio-digitale-nginx
+$ docker stack deploy -c docker-compose.yml archivio
+```
+
+## TODO
+
+- Non esporre minio alla rete esterna (rimuovere sezione `ports` in `docker-compose.yml/minio`)
+
 ## Authors
 
-* **Ernesto Montada** - [n4y0n](https://github.com/n4y0n)
+- **Ernesto Montada** - [n4y0n](https://github.com/n4y0n)
 
 ## License
 

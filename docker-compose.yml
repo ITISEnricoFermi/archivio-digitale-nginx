@@ -59,8 +59,6 @@ services:
       - database-config:/data/configdb
     environment:
       MONGO_INITDB_DATABASE: archivio
-    ports:
-      - 27017:27017
     networks:
       - backend-network
 
