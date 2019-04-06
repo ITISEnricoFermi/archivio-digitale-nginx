@@ -1,3 +1,5 @@
+client_max_body_size 0;
+
 upstream client {
   server $CLIENT:$CLIENT_PORT;
 }
