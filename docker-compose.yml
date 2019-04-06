@@ -38,6 +38,10 @@ services:
     environment:
       MONGODB_URI: "mongodb://database:27017/archivio"
       MAILER_URL: "http://mailer/send"
+      MINIO_HOST: "minio"
+      MINIO_PORT: "9000"
+      MINIO_ACCESS_KEY=kupvdl8WFlOj
+      MINIO_SECRET_KEY=SgbB8ktkFG17
       JWT_SECRET_FILE: "/run/secrets/archivio_server_jwt_secret"
     volumes:
       - server-data:/app/server/public
