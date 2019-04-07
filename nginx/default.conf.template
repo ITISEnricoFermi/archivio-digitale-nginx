@@ -1,5 +1,4 @@
 client_max_body_size 0;
-more_clear_headers 'X-XSS-Protection';
 
 upstream client {
   server $CLIENT:$CLIENT_PORT;
@@ -10,6 +9,12 @@ upstream api {
 }
 
 server {
+  add_header X-Ciao hello;
+  #add_header X-Frame-Options SAMEORIGIN;
+  #add_header X-XSS-Protection "1; mode=block";
+  #add_header X-Content-Type-Options nosniff;
+  #add_header Strict-Transport-Security 'max-age=15768000;includeSubDomains';
+  
   listen $PORT default_server;
 
   location / {
