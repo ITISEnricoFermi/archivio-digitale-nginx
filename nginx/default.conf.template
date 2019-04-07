@@ -9,6 +9,7 @@ upstream api {
 }
 
 server {
+  # Remove all inherited headers
   add_header X-Ciao hello;
   #add_header X-Frame-Options SAMEORIGIN;
   #add_header X-XSS-Protection "1; mode=block";
