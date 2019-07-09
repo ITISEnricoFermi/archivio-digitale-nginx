@@ -31,10 +31,6 @@ $ cd archivio-digitale-nginx
 $ docker stack deploy -c docker-compose.yml archivio
 ```
 
-## TODO
-
-- Non esporre minio alla rete esterna (rimuovere sezione `ports` in `docker-compose.yml/minio`)
-
 ## Authors
 
 - **Ernesto Montada** - [n4y0n](https://github.com/n4y0n)
