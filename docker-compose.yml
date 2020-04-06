@@ -57,7 +57,7 @@ services:
       - frontend-network
 
   database:
-    image: mongo:3.4.19-jessie
+    image: mongo:latest
     deploy:
       placement:
         constraints: [node.role == manager]
@@ -90,7 +90,7 @@ services:
       - backend-network
 
   minio:
-    image: minio/minio:RELEASE.2019-04-04T18-31-46Z
+    image: minio/minio:latest
     deploy:
       placement:
         constraints: [node.role == manager]
